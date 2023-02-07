@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Listagem{% endblock %}
+
+{% block content %}
+<h1 class="mt-2 mb-4 display-6">Livros</h1>
+
+<ul>
+    {% for livro in livros %}
+    <li><a href="{% url 'livro:atualizar' livro.id %}">{{livro.titulo}} - {{livro.valor}}</a></li>
+    <ul>
+        {% for autor in livro.autor.all %}
+        <li>{{autor.nome}}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+<a href="{% url 'livro:novo' %}">
+    <button type="submit">Adicionar</button>
+</a>
+{% endblock %}

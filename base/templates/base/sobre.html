@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Sobre{% endblock %}
+
+{% block cabecalho %}
+{% include "base/cabecalho.html" %}
+{% endblock %}
+
+{% block rodape %}
+{% include "base/rodape.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container col-xxl-8 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+
+        </div>
+        <div class="col-lg-6">
+            <figure>
+                <blockquote class="blockquote">
+                    <p>
+                    <h2>Sobre:</h2>
+                    Website de e-commerce voltado para vendas de livros, com opções de gêneros e preços diversos para todos os publicos.
+                    </p>
+                </blockquote>
+                <figcaption class="blockquote-footer pt-2">
+                    Turma de desenvolvimento web - Backend
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+{% endblock %}

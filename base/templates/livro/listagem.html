@@ -1,0 +1,54 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Listagem{% endblock %}
+
+{% block cabecalho %}
+    {% include "base/cabecalho.html" %}
+{% endblock %}
+
+{% block rodape %}
+    {% include "base/rodape.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="p-3">
+        <div class="container">
+            <h1 class="mt-2 mb-4 display-6">Livros</h1>
+        </div>
+
+        <div class="container mb-5">
+            {% block prominence %}
+                <form class="d-flex" method="POST" action="{% url 'livro:todos' %}">
+                    {% csrf_token %}
+
+                    <div class="input-group mb-3">
+                        <input type="text"
+                               name="busca"
+                               class="form-control"
+                               value="{{ busca }}"
+                               style="max-width: 15rem;"
+                               placeholder="Título do livro"
+                               aria-label="Recipient's username"
+                               aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary"
+                                type="submit"
+                                id="button-addon2">Buscar
+                        </button>
+                    </div>
+                </form>
+            {% endblock %}
+        </div>
+
+        {% include "livro/livros.html" %}
+
+    <!--
+    <div class="container">
+        <a href="{% url 'livro:novo' %}">
+            <button type="submit">Adicionar</button>
+        </a>
+    </div>
+    -->
+    </div>
+{% endblock %}

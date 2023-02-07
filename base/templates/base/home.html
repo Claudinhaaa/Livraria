@@ -1,0 +1,48 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Início{% endblock %}
+
+{% block cabecalho %}
+{% include "base/cabecalho.html" %}
+{% endblock %}
+
+{% block rodape %}
+{% include "base/rodape.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container col-xxl-8 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'img/hero-1.jpg' %}"
+                 class="d-block mx-lg-auto img-fluid"
+                 alt="Criança preta segurando 6 livros sobre a cabeça"
+                 loading="lazy"
+                 width="700"
+                 height="500">
+        </div>
+        <div class="col-lg-6">
+            <figure>
+                <blockquote class="blockquote">
+                    <p>
+                        Não basta saber ler que "Eva viu a uva". É preciso compreender qual a posição
+                        que Eva ocupa no seu contexto social, quem trabalha para produzir a uva e quem
+                        lucra com esse trabalho.
+                    </p>
+                </blockquote>
+                <figcaption class="blockquote-footer pt-2">
+                    Paulo Freire em <cite title="Pedagogia do Oprimido">Pedagogia do Oprimido</cite>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+<div class="bg-light py-5">
+    <div class="container">
+        <h1 class="mt-1 mb-4 display-6">Livros</h1>
+    </div>
+    {% include "livro/livros.html" %}
+</div>
+{% endblock %}

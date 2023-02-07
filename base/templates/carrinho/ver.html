@@ -1,0 +1,62 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Carrinho{% endblock %}
+
+{% block cabecalho %}
+    {% include "base/cabecalho.html" %}
+{% endblock %}
+
+{% block rodape %}
+    {% include "base/rodape.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="p-3">
+        <div class="container">
+            <h1 class="mt-2 mb-4 display-6">Carrinho</h1>
+        </div>
+
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div>
+                        <div class="row">
+                            <div class="col-lg-7">
+                                <h5 class="mb-3">
+                                    <a href="{% url 'livro:todos' %}" class="btn btn-secondary">
+                                        <i class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando
+                                    </a>
+                                </h5>
+
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <p class="mb-0">
+                                        Você
+                                        {% if itens|length %}
+                                            tem {{ itens|length }}
+                                            {% if itens|length > 1 %}
+                                                itens
+                                            {% else %}
+                                                item
+                                            {% endif %}
+                                        {% else %}
+                                            não tem itens
+                                        {% endif %}
+                                        no carrinho.
+                                    </p>
+                                </div>
+
+                                {% include "carrinho/itens.html" %}
+                            </div>
+
+                            {% if itens|length %}
+                                {% include "carrinho/pagamento.html" %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

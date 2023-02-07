@@ -1,0 +1,42 @@
+{% load static %}
+<style>
+    header {
+        background:#51413E;
+        color: red;
+    }
+    header a:not(.btn),
+    header .btn-link {
+        color: #FFEAC9 !important;
+    }
+</style>
+<header class="p-3">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-decoration-none">
+                <img src="{% static 'img/livro.png' %}" height="40" alt="">
+                <span class="fs-4">Livraria</span>
+            </a>
+
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{% url 'base:home' %}" class="nav-link px-2">Início</a></li>
+                <li><a href="{% url 'base:sobre' %}" class="nav-link px-2">Sobre</a></li>
+                <li><a href="{% url 'livro:todos' %}" class="nav-link px-2">Livros</a></li>
+                <li><a href="{% url 'carrinho:ver' %}" class="nav-link px-2">Carrinho</a></li>
+                <!--
+                <li><a href="{% url 'livro:buscar' %}" class="nav-link px-2">Buscar livro</a></li>
+                -->
+            </ul>
+
+            {% if user.is_authenticated %}
+            <div class="col-md-3 text-end">
+                <a class="btn btn-link" href="{% url 'base:logout' %}" role="button">Sair</a>
+            </div>
+            {% else %}
+            <div class="col-md-3 text-end">
+                <a class="btn btn-outline-light me-2" href="{% url 'base:login' %}" role="button">Entre</a>
+                <a class="btn btn-warning" href="{% url 'base:register' %}" role="button">Crie a sua conta</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</header>

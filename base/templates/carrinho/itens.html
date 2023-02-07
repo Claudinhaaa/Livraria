@@ -1,0 +1,35 @@
+{% load humanize %}
+
+{% for item in itens %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex flex-row align-items-center">
+                    <div class="flex-shrink-0">
+                        <img src="{{ item.livro.imagem.url }}"
+                             class="img-fluid rounded-3" alt="Shopping item"
+                             style="width: 65px;">
+                    </div>
+                    <div class="mx-3">
+                        <h5>{{ item.livro.titulo }}</h5>
+                        <p class="small mb-0">{{ item.livro.descricao }}</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    <div class="text-end" style="width: 2rem">
+                        <h5 class="fw-normal mb-0">{{ item.quantidade|floatformat:0|intcomma }}</h5>
+                    </div>
+                    <div class="mx-2">
+                        <h5 class="fw-normal mb-0"><i class="bi bi-x"></i></h5>
+                    </div>
+                    <div style="width: 6rem">
+                        <h5 class="mb-0">R$ {{ item.preco|floatformat:2|intcomma }}</h5>
+                    </div>
+                    <a href="{% url 'carrinho:remover' item.livro.id %}"
+                       style="color: rgb(206, 206, 206); --darkreader-inline-color: #c9c4bd;"
+                       data-darkreader-inline-color=""><i class="bi bi-trash3-fill"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor % %}

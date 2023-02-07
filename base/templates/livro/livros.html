@@ -1,0 +1,47 @@
+{% load humanize %}
+
+<div class="album pb-3">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            {% for livro in livros %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <a href="{% url 'livro:vermais' livro.id %}">
+                            {% if livro.imagem %}
+                                <img src="{{ livro.imagem.url }}"
+                                     class="bd-placeholder-img card-img-top object-fit-contain bg-body-secondary"
+                                     alt="Imagem de capa do livro"
+                                     loading="lazy"
+                                     width="100%"
+                                     height="225">
+                            {% else %}
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
+                                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                                    <rect width="100%" height="100%" fill="#e9ecef"></rect>
+                                    <text x="16px" y="50%" fill="#212529" dy=".3em">Sem imagem</text>
+                                </svg>
+                            {% endif %}
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <a href="{% url 'livro:vermais' livro.id %}" class="text-decoration-none text-dark">
+                                    {{ livro.titulo }}
+                                </a>
+                                <small class="text-muted">R$ {{ livro.valor|floatformat:2|intcomma }}</small>
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'livro:vermais' livro.id %}"
+                                       class="btn btn-sm btn-outline-secondary" role="button">Ver mais</a>
+                                    <a href="{% url 'carrinho:adicionar' livro.id %}"
+                                       class="btn btn-sm btn-outline-secondary" role="button">Adicionar ao carrinho</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
